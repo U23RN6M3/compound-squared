@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://l0a406cjh7dy"]
+
+[ext_resource type="Texture2D" uid="uid://cuu46r16l02cf" path="res://icon.svg" id="1_cnp2r"]
+[ext_resource type="Shader" uid="uid://cxlxq4qlux3vs" path="res://MainGame/main_game_scene.gdshader" id="1_poc5s"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_poc5s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_poc5s"]
+shader = ExtResource("1_poc5s")
+shader_parameter/vhs_resolution = Vector2(320, 240)
+shader_parameter/samples = 4
+shader_parameter/crease_noise = 0.5
+shader_parameter/crease_opacity = 0.5
+shader_parameter/filter_intensity = 0.1
+shader_parameter/tape_crease_smear = 0.2
+shader_parameter/tape_crease_intensity = 0.2
+shader_parameter/tape_crease_jitter = 0.1
+shader_parameter/tape_crease_speed = 0.5
+shader_parameter/tape_crease_discoloration = 1.0
+shader_parameter/bottom_border_thickness = 6.0
+shader_parameter/bottom_border_jitter = 6.0
+shader_parameter/noise_intensity = 0.1
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_poc5s")
+
+[node name="MainGameScene" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+material = SubResource("ShaderMaterial_poc5s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MinigameOrigin" type="Node2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="MinigameOrigin"]
+position = Vector2(328, 168)
+texture = ExtResource("1_cnp2r")
